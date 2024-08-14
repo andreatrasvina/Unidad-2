@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas{
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    
+    <canvas id="my_canvas" width="500" height="500"></canvas>
+
+    <script type="text/javascript">
+        const my_canvas = document.getElementById("my_canvas")
+        const ctx = my_canvas.getContext('2d')
+
+        ctx.fillStyle = "White"
+        ctx.fillRect(100,100,100,100)
+        ctx.fillStyle = "#9d9d9d"
+        ctx.fillRect(180,180,100,100)
+        ctx.fillStyle = "rgba(255, 219, 255, 1)"
+        ctx.fillRect(260,260,100,100)
+    </script>
+</body>
+</html>
