@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas{
+            background-color: rgb(255, 224, 229);
+        }
+    </style>
+</head>
+<body>
+    
+    <canvas id="my_canvas" width="500" height="500"></canvas>
+
+    <script type="text/javascript">
+        const my_canvas = document.getElementById("my_canvas")
+        const ctx = my_canvas.getContext('2d')
+        
+        let flag = 0;
+        let isPressed = false;
+
+        my_canvas.addEventListener("click", function(e) {
+
+            if(flag === 0) {
+                console.log(e);
+                ctx.strokeStyle="black"
+                ctx.beginPath();
+                ctx.arc(e.x, e.y, 50, 0, 2 * Math.PI);
+                ctx.stroke();
+                ctx.fillStyle = getRandomColor();
+                ctx.fill();
+               
+
+            } else {
+                ctx.fillStyle = getRandomColor();
+                ctx.strokeRect(e.x-10,e.y-10,100,100);
+                ctx.fillRect(e.x-10,e.y-10,100,100);
+                flag=0;
+            }
+
+        });
+
+        my_canvas.addEventListener("mouseover", function(e) {
+            ctx.fillStyle = getRandomColor();
+            flag = 1;
+        });
+
+
+        my_canvas.addEventListener("mousedown", function(e) {
+            isPressed = true;
+        });
+
+        my_canvas.addEventListener("mouseup", function(e) {
+            isPressed = false;
+        });
+
+        my_canvas.addEventListener("mousemove", function(e) {
+            if (isPressed) {
+                ctx.strokeRect(e.x, e.y, 1, 1);
+            }
+        }); 
+        
+        
+        function getRandomColor() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+        }
+
+        
+    </script>
+</body>
+</html>
+
