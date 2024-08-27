@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas{
+            background-color: rgb(255, 224, 229);
+        }
+    </style>
+</head>
+<body>
+    
+    <canvas id="my_canvas" width="500" height="500"></canvas>
+
+    <script type="text/javascript">
+
+        const my_canvas = document.getElementById("my_canvas")
+        const ctx = my_canvas.getContext('2d')
+        
+        let flag = 0;
+        let isPressed = false;
+
+        document.addEventListener("keydown", function(e) {
+            let x = Math.floor(Math.random() * 600);
+            let y = Math.floor(Math.random() * 600);
+
+            ctx.fillRect(x, y, 40, 40);
+            ctx.fillStyle = getRandomColor();
+            ctx.stroke();
+
+            ctx.font = "20px Arial";
+            ctx.strokeText(e.key, x+10, y+10);
+            
+        });
+
+        document.addEventListener("keypress", function(e) {
+            console.log(e);
+        });
+
+        document.addEventListener("keyup", function(e) {
+            console.log(e);
+        });
+        
+
+        function getRandomColor() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+        }
+
+    </script>
+</body>
+</html>
+
