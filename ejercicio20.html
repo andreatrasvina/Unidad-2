@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas{
+            background-color: rgb(255, 224, 229);
+        }
+    </style>
+</head>
+<body>
+    
+    <canvas id="my_canvas" width="500" height="500"></canvas>
+
+    <script type="text/javascript">
+
+        const my_canvas = document.getElementById("my_canvas")
+        const ctx = my_canvas.getContext('2d')
+
+        let x=250;
+        let y=250;
+
+        document.onkeydown = function(e){
+            ctx.fillStyle= "white"
+            ctx.fillRect(0,0,500,500)
+            ctx.fillStyle = getRandomColor();
+            switch(e.keyCode) {
+                case 37:
+                    y+=10;
+                break;
+                case 38:
+                    x-=10;
+                break;
+                case 39:
+                    x-=10;
+                break;
+                case 38:
+                    y+=10;
+                break;
+                
+            }
+            ctx.fillRect(x, y, 40, 40);
+
+        }
+
+
+        function getRandomColor() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+        }
+
+    </script>
+</body>
+</html>
+
