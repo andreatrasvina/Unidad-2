@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas{
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+    
+    <canvas id="my_canvas" width="500" height="500"></canvas>
+
+    <script type="text/javascript">
+
+        const my_canvas = document.getElementById("my_canvas")
+        const ctx = my_canvas.getContext('2d')
+
+        let direction = "";
+        let speed = 3;
+
+        let x=250;
+        let y=250;
+
+        document.onkeydown = function(e){
+
+            ctx.fillStyle ="gray";
+            ctx.fillRect(0,0,500,500)
+
+            switch(e.keyCode) {
+                case 37: //IZQUIERDA
+                    direction = "left";
+                    x-=speed;
+                break;
+                case 38://ARRIBA
+                    direction = "up";
+                    y-=speed;
+                break;
+                case 39://DERECHA
+                    direction = "right";
+                    x+=speed;
+                break;
+                case 40://ABAJO
+                    direction = "down";
+                    y+=speed;
+                break;
+                case 32://SPACE
+                    speed=speed+1;
+                break;
+            }
+            
+        }
+
+        function pintar(){
+
+            update();
+            ctx.fillStyle ="gray";
+            ctx.fillRect(0,0,500,500)
+            ctx.fillStyle = getRandomColor();
+            ctx.fillRect(x, y, 40, 40);
+
+            ctx.font = "20px Arial";
+            ctx.strokeText("speed: "+speed, 20, 20);
+
+            requestAnimationFrame(pintar);
+        }
+        requestAnimationFrame(pintar);
+
+        function update(){
+
+            switch(direction) {
+                case "left":
+                    x-=speed;
+                    if(x+50 <=0){
+                        x=520
+                    }
+                break;
+                case "up":
+                    y-=speed;
+                    if(y+50 <=0){
+                        y=520
+                    }
+                break;
+                case "right":
+                    x+=speed;
+                    if(x+50 >=520){
+                        x=-20
+                    }
+                break;
+                case "down":
+                    y+=speed;
+                    if(y-50 >=520){
+                        y=-20
+                    }
+                break;
+            }
+        }
+        
+
+
+        function getRandomColor() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+        }
+
+    </script>
+</body>
+</html>
+
