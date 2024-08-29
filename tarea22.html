@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas{
+            background-color: rgb(252,156,84);
+        }
+    </style>
+</head>
+<body>
+    
+    <canvas id="my_canvas" width="600" height="400"></canvas>
+
+    <script>
+        const canvas = document.getElementById('my_canvas');
+        const ctx = canvas.getContext('2d');
+
+        ctx.beginPath();
+        ctx.moveTo(150, 150);  
+        ctx.lineTo(0, 400);  
+        ctx.lineTo(300, 400);  
+        ctx.closePath();      
+        ctx.fillStyle = '#ffb66c';
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.moveTo(0, 270);  
+        ctx.lineTo(0, 400);  
+        ctx.lineTo(150, 150);  
+        ctx.closePath(); 
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.moveTo(450, 150);  
+        ctx.lineTo(280, 400);  
+        ctx.lineTo(660, 400);  
+        ctx.closePath(); 
+        ctx.fillStyle = '#ffb66c';
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.moveTo(450, 150);  
+        ctx.lineTo(300, 260);  
+        ctx.lineTo(280, 400);  
+        ctx.closePath(); 
+        ctx.fillStyle = '#ffb66c';
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.moveTo(150, 150);  
+        ctx.lineTo(300, 260);  
+        ctx.lineTo(285, 375);  
+        ctx.closePath(); 
+
+        ctx.fillStyle = '#ffd46c';
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.moveTo(450, 150);  
+        ctx.lineTo(600,250);  
+        ctx.lineTo(600, 330);  
+        ctx.closePath(); 
+        ctx.fillStyle = '#ffd46c';
+        ctx.fill();
+
+        //sol
+        ctx.beginPath();
+        ctx.arc(650, 0, 160, 0, Math.PI * 2);
+        ctx.fillStyle = '#ffe76c'; 
+        ctx.fill();
+        
+    </script>
+
+</body>
+</html>
+
