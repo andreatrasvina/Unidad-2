@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas{
+            background-color: #a2f0ff;
+        }
+    </style>
+</head>
+<body>
+    
+    <canvas id="my_canvas" width="700" height="400"></canvas>
+
+    <script>
+        const canvas = document.getElementById('my_canvas');
+        const ctx = canvas.getContext('2d');
+
+        //suelo
+        ctx.fillStyle = '#ffc4b5'; 
+        ctx.fillRect(0, 350, 700, 60);
+
+        ctx.beginPath();
+        ctx.moveTo(0, 350);    
+        ctx.lineTo(700, 350);   
+        ctx.strokeStyle = 'black';  
+        ctx.lineWidth = 2;       
+        ctx.stroke(); 
+
+        //sombra caja azul
+        ctx.fillStyle = 'black'; 
+        ctx.fillRect(250, 170, 130, 180);
+
+        //caja azul
+        ctx.fillStyle = '#71c2ff'; 
+        ctx.fillRect(240, 150, 120, 200);
+        ctx.strokeStyle = 'black';   
+        ctx.lineWidth = 2;          
+        ctx.strokeRect(240, 150, 120, 200);  
+
+        //sombra caja rosa
+        ctx.fillStyle = 'black'; 
+        ctx.fillRect(170, 250, 130, 100);
+
+        //caja rosa
+        ctx.fillStyle = '#ffc0b5'; 
+        ctx.fillRect(160, 230, 120, 120);
+        ctx.strokeStyle = 'black';   
+        ctx.lineWidth = 2;          
+        ctx.strokeRect(160, 230, 120, 120);  
+
+        //tornillos 
+
+
+        //alcantarilla
+        ctx.fillStyle = '#008800'; 
+        ctx.fillRect(450, 230, 100, 40);
+        ctx.strokeStyle = 'black';   
+        ctx.lineWidth = 2;          
+        ctx.strokeRect(450, 230, 100, 40); 
+
+        //abajo
+        ctx.fillStyle = '#008800'; 
+        ctx.fillRect(455, 270, 90, 80);
+        ctx.strokeStyle = 'black';   
+        ctx.lineWidth = 4;          
+        ctx.strokeRect(455, 270, 90, 80); 
+
+        //lineas
+        ctx.beginPath();
+        ctx.moveTo(462, 230);
+        ctx.lineTo(462, 348);
+        ctx.strokeStyle = '#00dc5c';
+        ctx.lineWidth = 4;
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(472, 230);
+        ctx.lineTo(472, 348);
+        ctx.strokeStyle = '#00dc5c';
+        ctx.lineWidth = 7;
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(487, 230);
+        ctx.lineTo(487, 348);
+        ctx.strokeStyle = '#00dc5c';
+        ctx.lineWidth = 3;
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(515, 230);
+        ctx.lineTo(515, 348);
+        ctx.strokeStyle = '#00dc5c';
+        ctx.lineWidth = 7;
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(528, 230);
+        ctx.lineTo(528, 348);
+        ctx.strokeStyle = '#00dc5c';
+        ctx.lineWidth = 7;
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(540, 230);
+        ctx.lineTo(540, 348);
+        ctx.strokeStyle = '#00dc5c';
+        ctx.lineWidth = 7;
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(450, 270);   
+        ctx.lineTo(550, 270); 
+        ctx.strokeStyle = 'black';  
+        ctx.lineWidth = 5;   
+        ctx.stroke();  
+
+        //sombra
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
+        ctx.fillRect(515, 230, 30, 120); 
+
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
+        ctx.fillRect(545, 230, 5, 40); 
+
+        //cuadro verde
+        ctx.fillStyle = '#00dd5b'; 
+        ctx.fillRect(600, 230, 120, 120);
+        ctx.strokeStyle = 'black';   
+        ctx.lineWidth = 2;          
+        ctx.strokeRect(600, 230, 120, 120);  
+
+        //cajas peque;as
+        ctx.fillStyle = '#ff8a4e'; 
+        ctx.fillRect(25, 150, 40, 40);
+        ctx.strokeStyle = 'black';   
+        ctx.lineWidth = 3;          
+        ctx.strokeRect(25, 150, 40, 40);  
+
+        ctx.fillStyle = '#ff8a4e'; 
+        ctx.fillRect(118, 25, 40, 40);
+        ctx.strokeStyle = 'black';   
+        ctx.lineWidth = 3;          
+        ctx.strokeRect(118, 25, 40, 40); 
+
+        ctx.fillStyle = '#ff8a4e'; 
+        ctx.fillRect(160, 25, 40, 40);
+        ctx.strokeStyle = 'black';   
+        ctx.lineWidth = 3;          
+        ctx.strokeRect(160, 25, 40, 40);
+
+        ctx.fillStyle = '#ff8a4e'; 
+        ctx.fillRect(640, 70, 40, 40);
+        ctx.strokeStyle = 'black';   
+        ctx.lineWidth = 3;          
+        ctx.strokeRect(640, 70, 40, 40);
+        
+    </script>
+
+</body>
+</html>
+
