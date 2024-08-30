@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas{
+            background-color: #2000a0;
+        }
+    </style>
+</head>
+<body>
+    
+    <canvas id="my_canvas" width="500" height="400"></canvas>
+
+    <script>
+        const canvas = document.getElementById('my_canvas');
+        const ctx = canvas.getContext('2d');
+
+        //Cuadrados del suelo
+        for (let y = canvas.height - 100; y < canvas.height; y += 20) {
+            for (let x = 0; x < canvas.width; x += 20) {
+                ctx.fillStyle = (x / 20 + y / 20) % 2 === 0 ? '#c06000' : '#602000';
+                ctx.fillRect(x, y, 20, 20);
+            }
+        }
+
+        //pasto
+        ctx.fillStyle = '#80e000';
+        ctx.fillRect(0, 290, 500, 20); 
+
+        ctx.fillStyle = '#40a000';
+        ctx.fillRect(0, 305, 500, 15); 
+
+        ctx.fillStyle = '#006000';
+        ctx.fillRect(0, 317, 500, 12); 
+
+        //sombra
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
+        ctx.fillRect(0, 329, 500, 20); 
+
+        //palitos
+        ctx.fillStyle = '#40a000';
+        ctx.fillRect(440, 240, 5, 50);
+
+        ctx.fillStyle = '#804000';
+        ctx.fillRect(280, 120, 10, 170);
+
+        //girasol
+        ctx.fillStyle = '#e0e000';
+        ctx.beginPath();
+        ctx.arc(443, 210, 30, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.fillStyle = '#406040';
+        ctx.beginPath();
+        ctx.arc(443, 210, 17, 0, Math.PI * 2);
+        ctx.fill();
+
+        //aritos
+        ctx.strokeStyle = '#faf904';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(70, 260, 16, 0, Math.PI * 2);
+        ctx.stroke();
+
+        ctx.strokeStyle = '#faf904';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(140, 260, 16, 0, Math.PI * 2);
+        ctx.stroke();
+
+        ctx.strokeStyle = '#faf904';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(210, 260, 16, 0, Math.PI * 2); 
+        ctx.stroke();
+
+        //hojas
+        ctx.fillStyle = '#80e000';
+        ctx.beginPath();
+        ctx.arc(285, 100, 80, 0, 2 * Math.PI);
+        ctx.fill();
+
+        ctx.fillStyle = '#80e000';
+        ctx.beginPath();
+        ctx.arc(0, 100, 70, 0, 2 * Math.PI);
+        ctx.fill();
+
+        
+
+    </script>
+
+
+</body>
+</html>
+
