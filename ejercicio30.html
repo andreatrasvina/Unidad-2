@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas{
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+    
+    <canvas id="my_canvas" width="500" height="500"></canvas>
+
+    <script type="text/javascript">
+
+        const my_canvas = document.getElementById("my_canvas")
+        const ctx = my_canvas.getContext('2d')
+
+        let direction = "";
+
+        class Rectangulo {
+            constructor(x, y, w, h, c, s) {
+                this.x = x;
+                this.y = y;
+                this.w = w;
+                this.h = h;
+                this.c = c;
+                this.s = s;
+            }
+
+            tocando(food) {
+                
+                if(this.x < food.x + food.w &&
+                    this.x + this.w > food.x &&
+                    this.y < food.y + food.h &&
+                    this.y + this.h > food.y){
+
+                    return true;
+                }
+
+                return false;
+            }
+        }
+
+        var player = new Rectangulo(250,250,40,40,getRandomColor(),3);
+
+        var food = new Rectangulo(Math.floor(Math.random() * 480),Math.floor(Math.random() * 480),20,20,getRandomColor());
+
+        document.onkeydown = function(e){
+
+            switch(e.keyCode) {
+                case 37: //IZQUIERDA
+                    direction = "left";
+                    player.x-=player.s;
+                break;
+                case 38://ARRIBA
+                    direction = "up";
+                    player.y-=player.s;
+                break;
+                case 39://DERECHA
+                    direction = "right";
+                    player.x+=player.s;
+                break;
+                case 40://ABAJO
+                    direction = "down";
+                    player.y+=player.s;
+                break;
+                case 32://SPACE
+                    player.s=player.s+1;
+                break;
+            }
+            
+        }
+
+        function pintar(){
+
+            update();
+            ctx.fillStyle ="gray";
+            ctx.fillRect(0,0,500,500);
+
+            ctx.fillStyle = player.c;
+            ctx.fillRect(player.x, player.y, player.h, player.w);
+
+            ctx.fillStyle = food.c;
+            ctx.fillRect(food.x, food.y, food.h, food.w);
+
+            ctx.font = "20px Arial";
+            ctx.strokeText("speed: "+player.s, 20, 20);
+
+            if(player.tocando(food) == true){
+                console.log("tocando");
+                food.x=Math.floor(Math.random() * 480);
+                food.y=Math.floor(Math.random() * 480);
+            }else{
+                console.log("destocando");
+            }
+
+            requestAnimationFrame(pintar);
+        }
+        requestAnimationFrame(pintar);
+
+        function update(){
+
+            switch(direction) {
+                case "left":
+                    player.x-=player.s;
+                    if(player.x+50 <=0){
+                        player.x=520
+                    }
+                break;
+                case "up":
+                    player.y-=player.s;
+                    if(player.y+50 <=0){
+                        player.y=520
+                    }
+                break;
+                case "right":
+                    player.x+=player.s;
+                    if(player.x+50 >=520){
+                        player.x=-20
+                    }
+                break;
+                case "down":
+                    player.y+=player.s;
+                    if(player.y-50 >=520){
+                        player.y=-20
+                    }
+                break;
+            }
+        }
+        
+
+
+        function getRandomColor() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+        }
+
+    </script>
+</body>
+</html>
+
