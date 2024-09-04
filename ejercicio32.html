@@ -20,7 +20,9 @@
         const ctx = my_canvas.getContext('2d')
 
         let direction = "";
+        let score = 0;
         let paredes = [];
+        let pause;
 
         class Rectangulo {
             constructor(x, y, w, h, c, s) {
@@ -105,18 +107,19 @@
                     player.y+=player.s;
                 break;
                 case 32://SPACE
-                    player.s=player.s+1;
+                    pause = !pause;
+                    
                 break;
             }
             
         }
 
         function pintar(){
-
             update();
             ctx.fillStyle ="gray";
             ctx.fillRect(0,0,500,500);
 
+    
             ctx.fillStyle = player.c;
             ctx.fillRect(player.x, player.y, player.h, player.w);
 
@@ -128,51 +131,61 @@
                 player.colisionPared(pared)
                 ctx.fillRect(pared.x, pared.y, pared.w, pared.h);
             });
+
             
 
             ctx.font = "20px Arial";
-            ctx.strokeText("speed: "+player.s, 20, 20);
+            ctx.strokeText("score: "+score, 20, 20);
 
 
             if(player.tocando(food) == true){
                 console.log("tocando");
+                score++;
+                //player.s++;
                 food.x=Math.floor(Math.random() * 480);
                 food.y=Math.floor(Math.random() * 480);
             }else{
                 console.log("destocando");
             }
 
+            
             requestAnimationFrame(pintar);
+           
         }
         requestAnimationFrame(pintar);
+        
 
         function update(){
 
-            switch(direction) {
-                case "left":
-                    player.x-=player.s;
-                    if(player.x+50 <=0){
-                        player.x=520
-                    }
-                break;
-                case "up":
-                    player.y-=player.s;
-                    if(player.y+50 <=0){
-                        player.y=520
-                    }
-                break;
-                case "right":
-                    player.x+=player.s;
-                    if(player.x+50 >=520){
-                        player.x=-20
-                    }
-                break;
-                case "down":
-                    player.y+=player.s;
-                    if(player.y-50 >=520){
-                        player.y=-20
-                    }
-                break;
+            if(!pause){
+                
+                switch(direction) {
+                    case "left":
+                        player.x-=player.s;
+                        if(player.x+50 <=0){
+                            player.x=520
+                        }
+                    break;
+                    case "up":
+                        player.y-=player.s;
+                        if(player.y+50 <=0){
+                            player.y=520
+                        }
+                    break;
+                    case "right":
+                        player.x+=player.s;
+                        if(player.x+50 >=520){
+                            player.x=-20
+                        }
+                    break;
+                    case "down":
+                        player.y+=player.s;
+                        if(player.y-50 >=520){
+                            player.y=-20
+                        }
+                    break;
+                }
+
             }
         }
         
